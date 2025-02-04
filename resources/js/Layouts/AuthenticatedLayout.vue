@@ -11,8 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-100">
+    <div class="h-full overflow-hidden flex flex-col bg-gray-100">
             <nav
                 class="border-b border-gray-100 bg-white"
             >
@@ -21,7 +20,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex shrink-0 items-center">
+                            <div class="fixed top-0 left-0 p-4">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
                                         class="block h-9 w-auto fill-current text-gray-800"
@@ -29,20 +28,10 @@ const showingNavigationDropdown = ref(false);
                                 </Link>
                             </div>
 
-                            <!-- Navigation Links -->
-                            <div
-                                class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
-                            >
-                                <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </div>
+
                         </div>
 
-                        <div class="hidden sm:ms-6 sm:flex sm:items-center">
+                        <div class="hidden sm:flex sm:items-center absolute top-4 right-0">
                             <!-- Settings Dropdown -->
                             <div class="relative ms-3">
                                 <Dropdown align="right" width="48">
@@ -139,14 +128,7 @@ const showingNavigationDropdown = ref(false);
                     }"
                     class="sm:hidden"
                 >
-                    <div class="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
+
 
                     <!-- Responsive Settings Options -->
                     <div
@@ -190,9 +172,8 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1 overflow-hidden">
                 <slot />
             </main>
         </div>
-    </div>
 </template>
